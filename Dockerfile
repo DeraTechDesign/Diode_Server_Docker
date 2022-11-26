@@ -17,4 +17,8 @@ RUN mix do compile, git_version
 
 EXPOSE 8545 8443 41046 443 993 1723 10000 51054
 
-CMD ["elixir", "-S", "mix", "run", "--no-halt"]
+# Download start script from github
+RUN curl -L https://raw.githubusercontent.com/DeraTechDesign/Diode_Server_Docker/main/start.sh -o start.sh
+
+# Start script
+CMD ["sh", "start.sh"]
