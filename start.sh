@@ -8,6 +8,7 @@ if [ -n "$BLOCKCHAIN_SQ3_URL" ]; then
     if [ ! -f /diode_server/data_prod/blockchain.sq3 ]; then
         echo "Downloading blockchain.sq3 from $BLOCKCHAIN_SQ3_URL"
         # Download the blockchain.sq3 file from the URL specified in the BLOCKCHAIN_SQ3_URL environment variable using axel
+        mkdir /diode_server/data_prod
         axel -n 10 -o /diode_server/data_prod/blockchain.sq3 $BLOCKCHAIN_SQ3_URL
     # If the blockchain.sq3 file already exists, we will check if it is the latest version by comparing the file size.
     # If the file size smaller then the snapshot, we will download the latest version of the blockchain.sq3 file.
