@@ -1,6 +1,9 @@
 #!/bin/sh
 # Before starting the server, if this is the first time, we need to download the latest version of the blockchain.sq3 file.
 # If BLOCKCHAIN_SQ3_URL is not set, we will skip this step.
+echo "Checking for blockchain.sq3 file..."
+echo "Check that we have BLOCKCHAIN_SQ3_URL vars"
+test -n "$BLOCKCHAIN_SQ3_URL"
 if [ -n "$BLOCKCHAIN_SQ3_URL" ]; then
     if [ ! -f /data/blockchain.sq3 ]; then
         echo "Downloading blockchain.sq3 from $BLOCKCHAIN_SQ3_URL"
