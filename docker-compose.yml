@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  diode_server:
+    image: tuhalf/diode
+    container_name: diode_server
+    restart: always
+    ports:
+      - "8545:8545"
+      - "8443:8443"
+      - "41046:41046"
+      - "443:443"
+      - "993:993"
+      - "1723:1723"
+      - "10000:10000"
+      - "51054:51054"
+    volumes:
+      - data:/diode_server/data_prod
+    environment:
+      # Your Wallet Private Key
+      # - PRIVATE = 0x0000000000000000000000000000000000000000000000000000000000000000
+      - WORKER_MODE = 800 # CPU usage in percent. 100% = 1 core. values over 100% are for multi-core systems. 800 = 8 cores

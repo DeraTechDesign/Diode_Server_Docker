@@ -1,0 +1,35 @@
+version: "2.0"
+
+services:
+  web:
+    image: user994455/ubuntu-base:0.2
+    env:
+      - sshport=1453
+      - pubkey=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC1AUywutwG1PpbOCXEqWFMV0bubLAa9eExwzq3xB5AD56bIrFTA83KmCsjm43Zm/0D09FkiR7Gx94IKnvpN8xPVVEp2KpA5agwePQgLTZL56fqVJEo31NfBkxpAYfefLiMhW9C4gpGXYgSVfyvy8FCp6V+fjkobJpp2NN441xMtSHG8c3VD9bReBURmBbRxRpoAlVswiXuwA/13wn+r7jcmuiVRGJMIZzRr9PVG7PMKaHQay2lz4qXt1JAbGZowXBiqz/GuQENh362teiY/aVEMNidsKS/ORg+tllE81ZVyh6DFkJ3D3Ap+yHPp3e43rz6duLCe8LiLHd3RAHhWHotU9FRVkDZl2hKUgWZmBYwg7LorSJKPZgHIwymsfb4rqjlJ8gEDz+hC/J5YmXLIceN46lTRS0XucKmIEOVtKvD9aC2O1bH23cjNoFJeiIHd6MCxyONERgH+8ZDS4v/4BJVA2ATW/fdjb72aKKmXFRhQ5XDimgRMD7oH9ivPF33+BE= tuhalf@DESKTOP-IE6POHO
+    expose:
+      - port: 1453
+        to:
+          - global: true
+
+profiles:
+  compute:
+    web:
+      resources:
+        cpu:
+          units: 4
+        memory:
+          size: 16Gi
+        storage:
+          size: 130Gi
+  placement:
+    akash:
+      pricing:
+        web:
+          denom: uakt
+          amount: 10000
+
+deployment:
+  web:
+    akash:
+      profile: web
+      count: 1
