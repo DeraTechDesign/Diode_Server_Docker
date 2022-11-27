@@ -5,14 +5,14 @@ services:
     container_name: diode_server
     restart: always
     ports:
-      - "8545:8545"
-      - "8443:8443"
       - "41046:41046"
       - "443:443"
       - "993:993"
       - "1723:1723"
       - "10000:10000"
       - "51054:51054"
+      # - "8545:8545" # Uncomment this line if you want to use the Ethereum RPC API
+      # - "8443:8443" # Uncomment this line if you want to use the Ethereum RPC API over HTTPS
     volumes:
       - data:/diode_server/data_prod
     environment:
