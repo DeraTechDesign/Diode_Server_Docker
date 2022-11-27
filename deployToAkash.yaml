@@ -1,6 +1,6 @@
 version: "2.0"
 endpoints:
- myendpoint:
+ myendpoint2:
    kind: ip
 services:
   diode:
@@ -9,30 +9,30 @@ services:
       - port: 41046
         to:
           - global: true  
-            ip: myendpoint
+            ip: myendpoint2
       - port: 443
         to:
           - global: true 
-            ip: myendpoint 
+            ip: myendpoint2 
       - port: 993
         to:
           - global: true  
-            ip: myendpoint
+            ip: myendpoint2
       - port: 1723
         to:
           - global: true  
-            ip: myendpoint
+            ip: myendpoint2
       - port: 10000
         to:
           - global: true  
-            ip: myendpoint
+            ip: myendpoint2
       - port: 51054
         to:
           - global: true  
-            ip: myendpoint
+            ip: myendpoint2
     env:
-      WORKER_MODE: 800 # CPU usage in percent. 100% = 1 core. values over 100% are for multi-core systems. 800 = 8 cores. setting Disabled will disable the worker.Recomended to set disabled in syncing period. 
-      BLOCKCHAIN_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      - WORKER_MODE=800 # CPU usage in percent. 100% = 1 core. values over 100% are for multi-core systems. 800 = 8 cores. setting Disabled will disable the worker.Recomended to set disabled in syncing period. 
+      - BLOCKCHAIN_SQ3_URL=https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
       #PRIVATE: 0x0000000000000000000000000000000000000000000000000000000000000000 # Your Wallet Private Key
     params:
       storage:
