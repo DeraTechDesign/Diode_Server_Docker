@@ -4,20 +4,23 @@ services:
     image: tuhalf/diode_server
     container_name: diode_server
     restart: always
-    ports:
-      - "41046:41046"
-      - "443:443"
-      - "993:993"
-      - "1723:1723"
-      - "10000:10000"
-      - "51054:51054"
-      # - "8545:8545" # Uncomment this line if you want to use the Ethereum RPC API
-      # - "8443:8443" # Uncomment this line if you want to use the Ethereum RPC API over HTTPS
+    network_mode: "host" # comment this line if you want to use the docker network but you need to assign an IP address to the container otherwise it will not work
+    # ports:    # uncomment this part if you want to use the docker network
+    #   - "41046:41046"
+    #   - "443:443"
+    #   - "993:993"
+    #   - "1723:1723"
+    #   - "10000:10000"
+    #   - "51054:51054"
+    #   # - "8545:8545" # Uncomment this line if you want to use the Ethereum RPC API
+    #   # - "8443:8443" # Uncomment this line if you want to use the Ethereum RPC API over HTTPS
     volumes:
       - data:/diode_server/data_prod
     environment:
       WORKER_MODE: 800 # CPU usage in percent. 100% = 1 core. values over 100% are for multi-core systems. 800 = 8 cores. setting Disabled will disable the worker.Recomended to set disabled in syncing period. 
-      BLOCKCHAIN_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
-      #PRIVATE: 0x0000000000000000000000000000000000000000000000000000000000000000 # Your Wallet Private Key
+      BLOCKCHAIN_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      CACHE_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/cache.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      SYNC_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/sync.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      #PRIVATE: 0x0000000000000000000000000000000000000000000000000000000000000000 # Your Wallet Private Key (optional)
 volumes:
   data:
