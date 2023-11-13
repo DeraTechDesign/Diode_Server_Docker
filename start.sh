@@ -51,6 +51,7 @@ fi
 # Before starting the server, we will do git fetch and pull to update the latest version of the source code.
 echo "Updating source code"
 git fetch
+git stash
 git pull
 #compile the source code
 echo "Compiling source code"
