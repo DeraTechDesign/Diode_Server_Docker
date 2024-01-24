@@ -18,9 +18,9 @@ services:
       - data:/diode_server/data_prod
     environment:
       WORKER_MODE: 800 # CPU usage in percent. 100% = 1 core. values over 100% are for multi-core systems. 800 = 8 cores. setting Disabled will disable the worker.Recomended to set disabled in syncing period. 
-      BLOCKCHAIN_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
-      CACHE_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/cache.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
-      SYNC_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/49x/sync.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      BLOCKCHAIN_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/67x/blockchain.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      CACHE_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/67x/cache.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
+      SYNC_SQ3_URL: https://pub-0d5d49260e184f7aa3fbc5cffff1d889.r2.dev/snapshots/67x/cache.sq3 # Blockchain snapshot url (optional but recommended for faster sync)
       #PRIVATE: 0x0000000000000000000000000000000000000000000000000000000000000000 # Your Wallet Private Key (optional)
 volumes:
   data:
