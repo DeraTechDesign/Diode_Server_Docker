@@ -68,5 +68,4 @@ if [ "$IEX_ENABLED" = "1" ]; then
 else
     elixir -S mix run --no-halt
 fi
-elixir -S mix run --no-halt
 
