@@ -60,11 +60,13 @@ mix compile
 # Start the server using elixir -S mix run --no-halt
 echo "Starting server"
 ulimit -n 120000
-export ERL_CRASH_DUMP_BYTES=5000000000
-export ERL_EPMD_ADDRESS=127.0.0.1
-export MIX_ENV=prod
-#If IEX_FLAGS environment variable is set, we will use the value of IEX_FLAGS as the IEX_FLAGS environment variable. If not, we will use the default value of IEX_FLAGS -noinput -noshell -sname diode
-export ELIXIR_ERL_OPTIONS="+sbwt none ${IEX_FLAGS:--noinput -noshell -sname diode} +A 8"
+
 mix git_version
+# if IEX_ENABLED is set to 1, we will start the server with iex
+if [ "$IEX_ENABLED" = "1" ]; then
+    iex -S mix
+else
+    elixir -S mix run --no-halt
+fi
 elixir -S mix run --no-halt
 
